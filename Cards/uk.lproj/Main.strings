@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Bank"; ObjectID = "4fO-MH-Fe1"; */
+"4fO-MH-Fe1.text" = "Банк";
+
+/* Class = "UIViewController"; title = "CardList"; ObjectID = "BYZ-38-t0r"; */
+"BYZ-38-t0r.title" = "Картки";
+
+/* Class = "UINavigationItem"; title = "CardList"; ObjectID = "SaU-ql-YYe"; */
+"SaU-ql-YYe.title" = "Картки";
+
+/* Class = "UILabel"; text = "Bank"; ObjectID = "su7-wM-rEF"; */
+"su7-wM-rEF.text" = "Банк";
+
+/* Class = "UILabel"; text = "**** "; ObjectID = "t4M-bq-93Y"; */
+"t4M-bq-93Y.text" = "**** ";

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h1P-qn-cOF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--CardList-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="CardListViewController" title="CardList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="CardListViewController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vE6-Es-iEj">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="bJC-bd-0CU"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="SPU-Jx-xtd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vE6-Es-iEj" secondAttribute="trailing" id="2pO-kJ-QTB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vE6-Es-iEj" secondAttribute="bottom" id="Xpi-Ng-09o"/>
+                            <constraint firstItem="vE6-Es-iEj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zz3-TE-2SX"/>
+                            <constraint firstItem="vE6-Es-iEj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cYq-Yi-CA0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="CardList" id="SaU-ql-YYe">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="Emc-tG-6jh">
+                            <connections>
+                                <action selector="onAddAction:" destination="BYZ-38-t0r" id="Sve-c8-98z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="vE6-Es-iEj" id="tki-UV-INj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="75"/>
+        </scene>
+        <!--Card Details View Controller-->
+        <scene sceneID="Ymz-Jf-mbB">
+            <objects>
+                <viewController storyboardIdentifier="CardDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hKD-Uf-HNe" customClass="CardDetailsViewController" customModule="Cards" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="57C-9X-kqP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUb-SL-z8V">
+                                <rect key="frame" x="112" y="140" width="190" height="122"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="su7-wM-rEF">
+                                        <rect key="frame" x="18" y="33" width="32" height="19"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="**** " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-bq-93Y">
+                                        <rect key="frame" x="18" y="69.5" width="28" height="19"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4fO-MH-Fe1">
+                                        <rect key="frame" x="46" y="69.5" width="32" height="19"/>
+                                        <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="masterCard" translatesAutoresizingMaskIntoConstraints="NO" id="rzQ-o8-w6b">
+                                        <rect key="frame" x="144" y="70" width="30" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="18" id="iLX-Cs-py3"/>
+                                            <constraint firstAttribute="width" constant="30" id="soR-PI-SC5"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4fO-MH-Fe1" firstAttribute="leading" secondItem="t4M-bq-93Y" secondAttribute="trailing" id="54A-dR-FJU"/>
+                                    <constraint firstAttribute="bottom" secondItem="rzQ-o8-w6b" secondAttribute="bottom" constant="34" id="Ou3-uf-alr"/>
+                                    <constraint firstItem="t4M-bq-93Y" firstAttribute="leading" secondItem="su7-wM-rEF" secondAttribute="leading" id="RlF-Yx-dfd"/>
+                                    <constraint firstAttribute="trailing" secondItem="rzQ-o8-w6b" secondAttribute="trailing" constant="16" id="W6z-nW-5u2"/>
+                                    <constraint firstItem="rzQ-o8-w6b" firstAttribute="centerY" secondItem="t4M-bq-93Y" secondAttribute="centerY" id="aoS-Ja-MdQ"/>
+                                    <constraint firstAttribute="width" constant="190" id="dnR-rb-dA1"/>
+                                    <constraint firstItem="su7-wM-rEF" firstAttribute="leading" secondItem="sUb-SL-z8V" secondAttribute="leading" constant="18" id="ipc-TH-Dia"/>
+                                    <constraint firstAttribute="height" constant="122" id="kxu-2M-iPZ"/>
+                                    <constraint firstItem="4fO-MH-Fe1" firstAttribute="centerY" secondItem="t4M-bq-93Y" secondAttribute="centerY" id="q5m-B0-2nE"/>
+                                    <constraint firstItem="su7-wM-rEF" firstAttribute="top" secondItem="sUb-SL-z8V" secondAttribute="top" constant="33" id="z7E-5w-yHZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="sUb-SL-z8V" firstAttribute="centerX" secondItem="d8W-gq-3wM" secondAttribute="centerX" id="0QU-PY-bME"/>
+                            <constraint firstItem="sUb-SL-z8V" firstAttribute="top" secondItem="d8W-gq-3wM" secondAttribute="top" constant="96" id="9gT-xr-cZu"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="d8W-gq-3wM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jJ1-Mp-gcG"/>
+                    <connections>
+                        <outlet property="cardNumberLbl" destination="4fO-MH-Fe1" id="0ub-lN-Xyj"/>
+                        <outlet property="cardTypeImageView" destination="rzQ-o8-w6b" id="U3E-mn-KPV"/>
+                        <outlet property="cardView" destination="sUb-SL-z8V" id="jJB-lk-K8J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r1B-hD-wEi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1837.68115942029" y="71.651785714285708"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SxI-FJ-WJi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h1P-qn-cOF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4X3-pY-Fdp">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="FPq-Fi-1Xa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zp-1B-J98" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="75"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="masterCard" width="30" height="19"/>
+    </resources>
+</document>
