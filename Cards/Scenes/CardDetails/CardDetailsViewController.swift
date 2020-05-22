@@ -21,6 +21,7 @@ class CardDetailsViewController: UIViewController, CardDetailsDisplayLogic
 {
   
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var innerCardView: UIView!
     @IBOutlet weak var cardTypeImageView: UIImageView!
     @IBOutlet weak var cardNumberLbl: UILabel!
     
@@ -59,42 +60,78 @@ class CardDetailsViewController: UIViewController, CardDetailsDisplayLogic
   
   // MARK: Routing
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-  {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let scene = segue.identifier {
       let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
       if let router = router, router.responds(to: selector) {
         router.perform(selector, with: segue)
       }
     }
-  }
-  
-  // MARK: View lifecycle
-  
-  override func viewDidLoad()
-  {
-    super.viewDidLoad()
-    fetchCard()
-    
-    cardView.layer.cornerRadius = 10
-    cardView.layer.masksToBounds = true
-  }
-  
-  // MARK: fetch card
-  
-   var card = CardDetails.DisplayedCard(type: "", cardNumber: "")
-   
-   func fetchCard()
-   {
-     let request = CardDetails.SelectedCard.Request()
-    interactor?.fetchCard(card: request)
    }
+  
+    // MARK: View lifecycle
+  
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchCard()
+    }
+  
+   // MARK: fetch card
+  
+    var card = CardDetails.DisplayedCard(type: "", cardNumber: "")
+   
+    func fetchCard() {
+        let request = CardDetails.SelectedCard.Request()
+    interactor?.fetchCard(card: request)
+    }
     
-  func displayCard(viewModel: CardDetails.SelectedCard.ViewModel)
-  {
-    card = viewModel.card
-    cardView.backgroundColor = card.type == "Visa" ? UIColor(red: 98.04/225, green: 66.67/225, blue: 7.45/225, alpha: 1) : .black
-    cardTypeImageView.image = card.type == "Visa" ? UIImage(named: "visa") : UIImage(named: "masterCard")
-    cardNumberLbl.text = "\(card.cardNumber)"
-  }
+    func displayCard(viewModel: CardDetails.SelectedCard.ViewModel) {
+        card = viewModel.card
+        cardView.layer.cornerRadius = 10
+        cardView.layer.masksToBounds = true
+        cardView.backgroundColor = card.type == "Visa" ? UIColor(red: 98.04/225, green: 66.67/225, blue: 7.45/225, alpha: 1) : .white
+        cardTypeImageView.image = card.type == "Visa" ? UIImage(named: "visa") : UIImage(named: "masterCard")
+        cardNumberLbl.text = "\(card.cardNumber)"
+        
+        addShadows()
+    
+    }
+    
+    func addShadows() {
+        let shadows = UIView()
+        shadows.frame = innerCardView.frame
+        shadows.clipsToBounds = false
+        innerCardView.addSubview(shadows)
+        
+        let shadowPath0 = UIBezierPath(roundedRect: shadows.bounds, cornerRadius: 10)
+        let layer0 = CALayer()
+        layer0.shadowPath = shadowPath0.cgPath
+        layer0.shadowColor = UIColor(red: 0.239, green: 0.239, blue: 0.239, alpha: 0.32).cgColor
+        layer0.shadowOpacity = 1
+        layer0.shadowRadius = 32
+        layer0.shadowOffset = CGSize(width: 0, height: 8)
+        layer0.bounds = shadows.bounds
+        layer0.position = shadows.center
+        shadows.layer.addSublayer(layer0)
+        
+        if card.type == "MasterCard" {
+            let shapes = UIView()
+            shapes.frame = view.frame
+            shapes.clipsToBounds = true
+            innerCardView.addSubview(shapes)
+            let layer1 = CAGradientLayer()
+            layer1.colors = [
+                UIColor(red: 0.138, green: 0.138, blue: 0.138, alpha: 1).cgColor,
+                UIColor(red: 0.342, green: 0.342, blue: 0.342, alpha: 1).cgColor]
+            layer1.locations = [0.55, 1]
+            layer1.startPoint = CGPoint(x: 0.25, y: 0.5)
+            layer1.endPoint = CGPoint(x: 0.75, y: 0.5)
+            layer1.transform = CATransform3DMakeAffineTransform(CGAffineTransform(a: -0.81, b: 0.94, c: -0.91, d: -3.97, tx: 1.3, ty: 1.99))
+            layer1.bounds = shapes.bounds.insetBy(dx: -0.5*shapes.bounds.size.width, dy: -0.5*shapes.bounds.size.height)
+            layer1.position = shapes.center
+            shapes.layer.addSublayer(layer1)
+            shapes.layer.cornerRadius = 10
+        }
+    }
+     
 }

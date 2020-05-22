@@ -65,6 +65,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sUb-SL-z8V">
                                 <rect key="frame" x="112" y="140" width="190" height="122"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccS-VR-v1r">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="122"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="su7-wM-rEF">
                                         <rect key="frame" x="18" y="33" width="32" height="19"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
@@ -94,14 +98,18 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="4fO-MH-Fe1" firstAttribute="leading" secondItem="t4M-bq-93Y" secondAttribute="trailing" id="54A-dR-FJU"/>
+                                    <constraint firstItem="ccS-VR-v1r" firstAttribute="top" secondItem="sUb-SL-z8V" secondAttribute="top" id="Htb-O4-ata"/>
                                     <constraint firstAttribute="bottom" secondItem="rzQ-o8-w6b" secondAttribute="bottom" constant="34" id="Ou3-uf-alr"/>
                                     <constraint firstItem="t4M-bq-93Y" firstAttribute="leading" secondItem="su7-wM-rEF" secondAttribute="leading" id="RlF-Yx-dfd"/>
+                                    <constraint firstItem="ccS-VR-v1r" firstAttribute="leading" secondItem="sUb-SL-z8V" secondAttribute="leading" id="Uoq-Eh-bxQ"/>
                                     <constraint firstAttribute="trailing" secondItem="rzQ-o8-w6b" secondAttribute="trailing" constant="16" id="W6z-nW-5u2"/>
                                     <constraint firstItem="rzQ-o8-w6b" firstAttribute="centerY" secondItem="t4M-bq-93Y" secondAttribute="centerY" id="aoS-Ja-MdQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="ccS-VR-v1r" secondAttribute="bottom" id="atJ-EG-9ZX"/>
                                     <constraint firstAttribute="width" constant="190" id="dnR-rb-dA1"/>
                                     <constraint firstItem="su7-wM-rEF" firstAttribute="leading" secondItem="sUb-SL-z8V" secondAttribute="leading" constant="18" id="ipc-TH-Dia"/>
                                     <constraint firstAttribute="height" constant="122" id="kxu-2M-iPZ"/>
                                     <constraint firstItem="4fO-MH-Fe1" firstAttribute="centerY" secondItem="t4M-bq-93Y" secondAttribute="centerY" id="q5m-B0-2nE"/>
+                                    <constraint firstAttribute="trailing" secondItem="ccS-VR-v1r" secondAttribute="trailing" id="xxa-3d-6FH"/>
                                     <constraint firstItem="su7-wM-rEF" firstAttribute="top" secondItem="sUb-SL-z8V" secondAttribute="top" constant="33" id="z7E-5w-yHZ"/>
                                 </constraints>
                             </view>
@@ -118,6 +126,7 @@
                         <outlet property="cardNumberLbl" destination="4fO-MH-Fe1" id="0ub-lN-Xyj"/>
                         <outlet property="cardTypeImageView" destination="rzQ-o8-w6b" id="U3E-mn-KPV"/>
                         <outlet property="cardView" destination="sUb-SL-z8V" id="jJB-lk-K8J"/>
+                        <outlet property="innerCardView" destination="ccS-VR-v1r" id="yh7-0Q-RDg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r1B-hD-wEi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
