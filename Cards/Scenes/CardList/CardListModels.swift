@@ -37,6 +37,22 @@ enum CardList
       }
     }
     
+    enum FetchCard
+    {
+      struct Request
+      {
+        var cardNumber: String
+      }
+      struct Response
+      {
+        var card: Card
+      }
+      struct ViewModel
+      {
+        var displayedCard: DisplayedCard
+      }
+    }
+    
     enum CreateCard
     {
       struct Request

@@ -100,6 +100,8 @@ class CardListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let request = CardList.FetchCard.Request(cardNumber: displayedCards[indexPath.row].cardNumber)
+//        interactor?.fetchCard(request: request)
          router?.routeToCardDetails(segue: nil)
     }
     

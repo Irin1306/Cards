@@ -80,32 +80,32 @@ final class CoreDataStore {
         }
     }
     
-//    static func fetchItem<T: NSManagedObject>(_ objectType: T.Type, number: String, completionHandler: @escaping (() throws -> T) -> Void) {
-//
-//        let entityName = String(describing: objectType)
-//
-//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
-//        fetchRequest.predicate = NSPredicate(format: "number == %@", number)
-//        do {
-//           let fetchedObjects = try context.fetch(fetchRequest) as! [T]
-//
-//           if let fetchedObject = fetchedObjects.first {
-//             DispatchQueue.main.async {
-//               completionHandler { return fetchedObject }
-//             }
-//           } else {
-//             DispatchQueue.main.async {
-//               completionHandler { throw CoreDataStoreError.CannotFetch("Cannot fetch item \(number)") }
-//             }
-//           }
-//
-//        } catch {
-//           DispatchQueue.main.async {
-//               completionHandler { throw CoreDataStoreError.CannotFetch("Cannot fetch item \(number)") }
-//           }
-//       }
-//
-//    }
+    static func fetchItem<T: NSManagedObject>(_ objectType: T.Type, number: String, completionHandler: @escaping (() throws -> T?) -> Void) {
+
+        let entityName = String(describing: objectType)
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "cardNumber == %@", number)
+        do {
+           let fetchedObjects = try context.fetch(fetchRequest) as! [T]
+
+           if let fetchedObject = fetchedObjects.first {
+             DispatchQueue.main.async {
+               completionHandler { return fetchedObject }
+             }
+           } else {
+             DispatchQueue.main.async {
+               completionHandler { throw CoreDataStoreError.CannotFetch("Cannot fetch item \(number)") }
+             }
+           }
+
+        } catch {
+           DispatchQueue.main.async {
+               completionHandler { throw CoreDataStoreError.CannotFetch("Cannot fetch item \(number)") }
+           }
+       }
+
+    }
     
     deinit
     {

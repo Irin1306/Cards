@@ -26,19 +26,22 @@ class CardListWorker
     })
   }
   
-//  func fetchCustomer(id: String, completionHandler: @escaping (() throws -> Customer?) -> Void)
-//  {
-//    customerDataStore.fetchCustomer(id: id) { (managedCustomer: () throws -> ManagedCustomer?) in
-//      do {
-//        let managedCustomer = try managedCustomer()
-//        if let customer = managedCustomer?.toCustomer() {
-//          completionHandler { return customer }
-//        } else {
-//          throw CoreDataStoreError.CannotFetch("Cannot fetch customer with id \(id)")
-//        }
-//      } catch {}
-//    }
-//  }
+  func fetchCard(number: String, completionHandler: @escaping (() throws -> Card?) -> Void)
+  {
+    CoreDataStore.fetchItem(CoreDataCard.self, number: number, completionHandler: { (coreDataCard: () throws -> CoreDataCard?) in
+        do {
+            let coreDataCard = try coreDataCard()
+            if let card = coreDataCard?.toCard() {
+                completionHandler { return card }
+            } else {
+                throw CoreDataStoreError.CannotFetch("Cannot fetch item \(number)")
+            }
+        } catch {
+          //  print(error)
+        }
+    })
+ 
+  }
   
     func createCard(cardToCreate: Card, completionHandler: @escaping (Card?) -> Void) {
         

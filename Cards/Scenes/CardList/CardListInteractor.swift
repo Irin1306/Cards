@@ -16,27 +16,28 @@ protocol CardListBusinessLogic
 {
     var cards: [Card] { get set }
     func fetchCards(request: CardList.FetchCards.Request)
+    func fetchCard(request: CardList.FetchCard.Request)
     func createCard(request: CardList.CreateCard.Request)
 }
 
 protocol CardListDataStore {
-  var cards: [Card] { get }
+    var cards: [Card] { get }
+    var card: Card! { get set }
     
 }
 
 class CardListInteractor: CardListBusinessLogic, CardListDataStore {
    
-  var presenter: CardListPresentationLogic?
-  var worker = CardListWorker()
-  var cards: [Card] = []
+    var presenter: CardListPresentationLogic?
+    var worker = CardListWorker()
+    var cards: [Card] = []
+    var card: Card!
    
    // MARK: Fetch cards
    
-   func fetchCards(request: CardList.FetchCards.Request)
-   {
-     worker.fetchCards { (cards: () throws -> [Card]) in
+   func fetchCards(request: CardList.FetchCards.Request) {
+    worker.fetchCards { (cards: () throws -> [Card]) in
        do {
-          
          let fetchedCards = try cards()
          self.cards = fetchedCards.sorted(by: {$0.created > $1.created})
          let response = CardList.FetchCards.Response(cards: self.cards)
@@ -44,11 +45,24 @@ class CardListInteractor: CardListBusinessLogic, CardListDataStore {
        } catch {}
      }
    }
+    
+    // MARK: Fetch card
+    
+    func fetchCard(request: CardList.FetchCard.Request) {
+        worker.fetchCard(number: request.cardNumber) { (card: () throws -> Card?) in
+            do {
+                self.card = try card()
+                let response = CardList.FetchCard.Response(card: self.card)
+//                self.presenter?.presentFetchedCards(response: response)
+            } catch {
+                print(error)
+            }
+      }
+    }
    
    // MARK: Create card
    
-   func createCard(request: CardList.CreateCard.Request)
-   {
+   func createCard(request: CardList.CreateCard.Request) {
     let card = Card(created: request.created, type: request.type, cardNumber: request.cardNumber)
     worker.createCard(cardToCreate: card, completionHandler: { (card: Card?) in
         guard let card = card else { return }
